@@ -1,7 +1,16 @@
 <h2>Book detail</h2>
- <%= image_tag 'sample-author1.jpg' %>
- <p><%= @book.user.name %></p>
- <p><%= @book.title %></p>
- <p><%= @book.body %></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><%= image_tag @book.user.get_profile_image("100x100") %><br><%= @book.user.name %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
+    </tr>
+  </tbody>
+</table>
+
  <%= link_to "Edit", edit_book_path(@book.id) %>
  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+
+ <%= render 'list', user: @user, book: @book %>
