@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   def edit
     @user= current_user
+    if @user == current_user
+        render :edit
+    else
+        redirect_to :show
+    end
   end
 
   def update
