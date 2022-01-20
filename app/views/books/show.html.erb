@@ -9,15 +9,15 @@
 
 <h2>Book detail</h2>
 
-<table class="table table-striped">
+<table class="table">
   <tbody>
     <tr>
-      <td><%= image_tag @book.user.get_profile_image("100x100") %><br><%= @book.user.name %></td>
+      <td><%= image_tag @book.user.get_profile_image("40x40") %><br><%= @book.user.name %></td>
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
       <% if @book.user == current_user %>
-       <td><%= link_to "Edit", edit_book_path(@book.id) %></td>
-       <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+       <td><%= link_to "Edit", edit_book_path(@book.id),class: "btn btn-success" %></td>
+       <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？",class: "btn btn-danger" %></td>
       <% end %>
     </tr>
   </tbody>
