@@ -13,9 +13,23 @@
   </tbody>
 </table>
 
-
+  <% if user.id == current_user.id %>
+   <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+  <% else %>
+   <p><%= link_to "プロフィール編集", user_path(current_user) %></p>
+  <% end %>
 
 <h2>New book</h2>
+
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
   <%= form_with model: book, local:true do |f| %>
 
     <h4>Title</h4>
